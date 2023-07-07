@@ -1,0 +1,13 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mariadb
+spec:
+  selector:
+    app: mariadb
+  ports:
+    - port: 3306  
+      protocol: TCP
+      name: mariadb-3306
+  type: ClusterIP

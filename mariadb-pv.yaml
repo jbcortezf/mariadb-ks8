@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mariadb-nce-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: slow
+  hostPath:
+    path: /mnt/mariadb-nce-data
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-nce-pv-claim
+  labels:
+    app: mariadb-nce-pv-claim
+spec:
+  storageClassName: slow
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
